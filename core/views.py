@@ -10,3 +10,10 @@ def home(request):
 def doctors(request):
     doctorslist=['dr.ridha fathima','dr.raniya','dr.rayan']
     return render(request,'doctors.html',{'doctor':doctorslist})
+def departments(request):
+    departmentslist={
+        'department1':'cardiology',
+        'department2':'neurology',
+        'department3':'orthopedics',
+    }
+    return render(request,'department.html',{'department':departmentslist})
