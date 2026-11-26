@@ -1,5 +1,8 @@
 from django.shortcuts import render
 def home(request):
-    return render(request,'home.html')
-def about(request):
-    return render(request,'about.html')
+    hospitals={
+        'name':'CAREWELL',
+        'location':'RAMANATTUKARA KOZHIKODE',
+        'phone number':'234567899'
+    }
+    return render(request,'home.html',{'hospitals':hospitals})
