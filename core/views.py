@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect
 from .forms import Registrationform
-from django.contrib.auth import authenticate,login as auth_login,logout
+from django.contrib.auth import authenticate,login as auth_login,logout as auth_logout
+
 def home(request):
     hospitals={
         'name':'CAREWELL',
-        'location':'RAMANATTULARA,KOZHIKODE',
+        'location':'RAMANATTUKARA,KOZHIKODE',
         'phonenumber':'9083838292'
     }
     return render(request,'home.html',{'hospital':hospitals})
@@ -38,3 +39,6 @@ def login(request):
         else:
             return render(request,'login.html',{'error':'invalid username or password'})
     return render(request,'login.html')
+def logout(request):
+    auth_logout(request)
+    return redirect('home')
