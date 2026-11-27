@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import Registrationform
 from django.contrib.auth import authenticate,login as auth_login,logout as auth_logout
-
+from django.contrib.auth.decorators import login_required
 def home(request):
     hospitals={
         'name':'CAREWELL',
@@ -9,9 +9,11 @@ def home(request):
         'phonenumber':'9083838292'
     }
     return render(request,'home.html',{'hospital':hospitals})
+@login_required
 def doctors(request):
     doctorslist=['dr.ridha fathima','dr.raniya','dr.rayan']
     return render(request,'doctors.html',{'doctor':doctorslist})
+@login_required
 def departments(request):
     departmentslist={
         'department1':'cardiology',

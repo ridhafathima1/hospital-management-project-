@@ -1,3 +1,4 @@
+LOGIN_URL='login'
 """
 Django settings for config project.
 
