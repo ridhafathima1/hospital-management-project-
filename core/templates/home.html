@@ -1,9 +1,18 @@
+{% load static%}
 <!DOCTYPE html>
 <html>
     <head>
         <title>this is my home page </title>
+        <link rel="stylesheet" href="{%static 'css/style.css'%}">
     </head>
     <body>
+
+        <div class="container">
+        
+            <a href="{% url 'home'%}">HOME</a>
+            <a href="{% url 'doctors'%}">DOCTORS</a>
+            <a href="{% url 'departments'%}">DEPARTMENTS</a>
+        </div>
     <h1>this page contains all the details about the hospital</h1>
     <h2>{{hospital.name}}</h2>
     <h2>{{hospital.location}}</h2>

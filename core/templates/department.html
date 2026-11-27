@@ -1,12 +1,17 @@
+{%load static%}
 <!DOCTYPE html>
 <html>
     <head>
         <title>this is the department page</title>
+        <link rel="stylesheet" href="{%static 'css/style.css'%}">
     </head>
     <body>
+        {% include 'navbar.html'%}
+        <div class="container">
         <h1>available department in this hospital</h1>
         <p>{{department.department1}}</p>
          <p>{{department.department2}}</p>
           <p>{{department.department3}}</p>
+          </div>
     </body>
 </html>
