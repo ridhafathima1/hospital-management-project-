@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import Registrationform
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate,login as auth_login,logout
 def home(request):
     hospitals={
         'name':'CAREWELL',
@@ -33,8 +33,8 @@ def login(request):
         password=request.POST.get('password')
         user=authenticate(username=username,password=password)
         if user is not None:
-            login(request,user)
+            auth_login(request,user)
             return redirect('home')
         else:
-            return render(request,'login.html',{'error':'invalid email or password'})
+            return render(request,'login.html',{'error':'invalid username or password'})
     return render(request,'login.html')
