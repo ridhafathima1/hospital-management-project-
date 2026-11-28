@@ -3,10 +3,15 @@
 <html>
     <head>
         <title>this is my home page </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{%static 'css/style.css'%}">
     </head>
     <body>
-
+{% if messages%}
+{%for message in messages%}
+<p>{{message}}</p>
+{%endfor%}
+{%endif%}
         <div class="container">
         
             <a href="{% url 'home'%}">HOME</a>

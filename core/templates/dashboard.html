@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>dashboard</title>
+    </head>
+    <body>
+        {% include 'navbar.html'%}
+        <h1>welcome dashboard</h1>
+        <h2>welcome,{{request.user.username}}</h2>
+        <p>email:{{request.user.email}}</p>
+        <a href="{%url 'logout'%}"></a>
+    </body>
+</html>

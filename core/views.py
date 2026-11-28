@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib import messages
 from .forms import Registrationform
 from django.contrib.auth import authenticate,login as auth_login,logout as auth_logout
 from django.contrib.auth.decorators import login_required
@@ -26,6 +27,7 @@ def register(request):
         form=Registrationform(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'registration successfull')
             return redirect('login')
     else:
         form=Registrationform()
@@ -37,10 +39,16 @@ def login(request):
         user=authenticate(username=username,password=password)
         if user is not None:
             auth_login(request,user)
-            return redirect('home')
+            messages.success(request,'login successfull')
+            return redirect('dashboard')
         else:
-            return render(request,'login.html',{'error':'invalid username or password'})
+            messages.error(request,'invalid username or password')
+            return render(request,'login.html')
     return render(request,'login.html')
 def logout(request):
     auth_logout(request)
+    messages.success(request,'logout successfull')
     return redirect('home')
+@login_required
+def dashboard(request):
+    return render(request,'dashboard.html')

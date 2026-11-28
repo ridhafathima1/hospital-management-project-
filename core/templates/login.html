@@ -4,6 +4,11 @@
         <title> this is the home page</title>
     </head>
     <body>
+        {% if messages %}
+        {%for message in messages%}
+        <p>{{message}}</p>
+        {%endfor%}
+        {%endif%}
     <h1>userlogin</h1>
     {%if error%}
     <p>{{error}}</p>
